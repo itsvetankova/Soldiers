@@ -33,4 +33,4 @@ Soldier& Soldier::operator=(Soldier const& other)
 
 	return *this;
 }
-ljnj///
+ljnj
