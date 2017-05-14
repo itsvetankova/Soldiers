@@ -1,5 +1,7 @@
 #include "Soldier.h"
+#include <iostream>
 #include <cstring>
+
 Soldier::Soldier()
 {
 	this->name = nullptr;
@@ -9,28 +11,48 @@ Soldier::Soldier()
 }
 Soldier::Soldier(char* name, int yearsOld, int fightingSkills, int salary):name(nullptr)
 {
-	this->yearsOld = yearsOld;
-	this->fightingSkills = fightingSkills;
-	this->salary = salary;
 	delete[] this->name;
-	this->name = new char[strlen(name) + 1];
-	strcpy(this->name, name);
+	SoldierCreationHelper(name, yearsOld,  fightingSkills, salary);
 }
 Soldier::Soldier(Soldier const& other)
 {
-	this->yearsOld = other.yearsOld;
-	this->fightingSkills = other.fightingSkills;
-	this->salary = other.salary;
-	//?delete[] this->name;
-	this->name = new char(strlen(other.name) + 1);
-	strcpy(this->name, other.name);
+	SoldierCreationHelper(other.name, other.yearsOld, other.fightingSkills, other.salary);
 }
 Soldier& Soldier::operator=(Soldier const& other)
 {
-	this->yearsOld = other.yearsOld;
-	this->fightingSkills = other.fightingSkills;
-	this->salary = other.salary;
-
+	delete[] this->name;
+	SoldierCreationHelper(other.name, other.yearsOld, other.fightingSkills, other.salary);
 	return *this;
 }
-ljnj///
+void Soldier::SoldierCreationHelper(char* name, int yearsOld, int fightingSkills, int salary)
+{
+	this->name = new char[strlen(name) + 1];
+	strcpy(this->name, name);
+	this->yearsOld = yearsOld;
+	this->fightingSkills = fightingSkills;
+	this->salary = salary;
+}
+Soldier::~Soldier()
+{
+	delete[] name;
+}
+void Soldier::print()
+{
+	std::cout << this->salary;
+}
+char* Soldier::getName()
+{
+	return this->name;
+}
+int Soldier::getYears()
+{
+	return this->yearsOld;
+}
+int Soldier::getFightingSkills()
+{
+	return this->fightingSkills;
+}
+int Soldier::getSalary()
+{
+	return this->salary;
+}

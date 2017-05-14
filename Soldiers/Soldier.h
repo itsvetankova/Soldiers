@@ -6,6 +6,7 @@ class Soldier
 	int yearsOld;
 	int fightingSkills;
 	int salary;
+	void SoldierCreationHelper(char* name, int yearsOld, int fightingSkills, int salary);
 public:
 	Soldier();
 	Soldier(char*, int, int, int);
@@ -14,6 +15,7 @@ public:
 	~Soldier();
 	char* getName();
 	int getYears();
-	int getFightingSkils();
+	int getFightingSkills();
 	int getSalary();
+	void print();
 };
