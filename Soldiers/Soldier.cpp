@@ -11,21 +11,23 @@ Soldier::Soldier()
 }
 Soldier::Soldier(char* name, int yearsOld, int fightingSkills, int salary):name(nullptr)
 {
-	delete[] this->name;
-	SoldierCreationHelper(name, yearsOld,  fightingSkills, salary);
+	SoldierCreationHelper(name, yearsOld, fightingSkills, salary);
 }
-Soldier::Soldier(Soldier const& other)
+Soldier::Soldier(Soldier const& other): name(nullptr)
 {
 	SoldierCreationHelper(other.name, other.yearsOld, other.fightingSkills, other.salary);
 }
 Soldier& Soldier::operator=(Soldier const& other)
 {
-	delete[] this->name;
-	SoldierCreationHelper(other.name, other.yearsOld, other.fightingSkills, other.salary);
+	if (this != &other)
+	{
+		SoldierCreationHelper(other.name, other.yearsOld, other.fightingSkills, other.salary);
+	}
 	return *this;
 }
 void Soldier::SoldierCreationHelper(char* name, int yearsOld, int fightingSkills, int salary)
 {
+	delete[] this->name;
 	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
 	this->yearsOld = yearsOld;
@@ -38,7 +40,17 @@ Soldier::~Soldier()
 }
 void Soldier::print()
 {
-	std::cout << this->salary;
+	if (this->name != nullptr)
+	{
+		std::cout << "Name: " << this->getName() << std::endl <<
+			"Years: " << this->getYears() << std::endl <<
+			"Fighting skills: " << this->getFightingSkills() << std::endl <<
+			"Salary: " << this->getSalary() << std::endl;
+	}
+	else
+	{
+		std::cout << "There's no information\n";
+	}
 }
 char* Soldier::getName()
 {

@@ -4,15 +4,11 @@
 
 Sergeant::Sergeant()
 {
-	this->name = nullptr;
 	this->soldiers = nullptr;
 	this->length = 0;
 }
-Sergeant::Sergeant(char* name, Soldier* soldiers, int length) :name(nullptr), soldiers(nullptr)
+Sergeant::Sergeant(char* name, int yearsOld, int fightingSkills, int salary, Soldier* soldiers, int length) :Soldier(name, yearsOld, fightingSkills, salary), soldiers(nullptr)
 {
-	delete[] this->name;
-	this->name = new char[strlen(name) + 1];
-	strcpy(this->name, name);
 	this->length = length;
 	delete[] this->soldiers;
 	this->soldiers = new Soldier[length];
@@ -23,18 +19,13 @@ Sergeant::Sergeant(char* name, Soldier* soldiers, int length) :name(nullptr), so
 }
 Sergeant::~Sergeant()
 {
-	delete[] name;
 	delete[] soldiers;
 }
 void Sergeant::print()
 {
-	if (this->name != nullptr)
+	Soldier::print();
+	for (int i = 0; i < length; i++)
 	{
-		std::cout << this->name;
+		soldiers[i].Soldier::print();
 	}
-	else
-	{
-		std::cout << "NO";
-	}
-	
 }
