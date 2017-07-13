@@ -1,5 +1,7 @@
 #include "Soldier.h"
 #include "Sergeant.h"
+#include "Spell.h"
+#include "MagicBook.h"
 
 int main()
 {
@@ -12,9 +14,20 @@ int main()
 	D = A;
 	Soldier E;//(A);
 	E = A;
-	A.print();
-	Soldier soldiers[5] = { A,  B, C, D, E};
+	//A.print();
+	Soldier* soldiers[5] = {new Soldier(A), new Soldier(B), new Soldier(C), new Soldier(D), new Soldier(E)};
+
 	Sergeant T("Name", 20,5,200, soldiers,3);
-	T.print();
+
+	Soldier* F = new Sergeant(T);
+	//F->print();
+	//T.print();
+	Spell S("mySpell", 15);
+	Spell My = S;
+	Spell Y("T", 45);
+	Spell spell[3] = { S, My, Y};
+	MagicBook M(spell, 3);
+	My.print();
+	M.print();
 	return 0;
 }

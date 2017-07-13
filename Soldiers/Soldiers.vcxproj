@@ -142,12 +142,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MagicBook.cpp" />
     <ClCompile Include="Sergeant.cpp" />
     <ClCompile Include="Soldier.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Spell.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MagicBook.h" />
     <ClInclude Include="Sergeant.h" />
     <ClInclude Include="Soldier.h" />
     <ClInclude Include="Spell.h" />

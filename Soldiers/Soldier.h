@@ -2,6 +2,7 @@
 
 class Soldier
 {
+protected:
 	char* name;
 	int yearsOld;
 	int fightingSkills;
@@ -17,5 +18,5 @@ public:
 	int getYears();
 	int getFightingSkills();
 	int getSalary();
-	void print();
+	virtual void print();
 };
